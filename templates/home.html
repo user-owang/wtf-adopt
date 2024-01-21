@@ -1,0 +1,32 @@
+{% extends 'base.html' %}{% block title%}WTF Adoption Agency{% endblock %} {%
+block content %}
+<h1>WTF Adoption Agency Pets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Name</th>
+      <th>Availability</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pet in pets%}
+    <tr>
+      <td>
+        <img
+          src="{{pet.img_url}}"
+          alt="Picture of {{pet.name}} the {{pet.species}}"
+        />
+      </td>
+      <td><a href="/{{pet.id}}">{{pet.name}}</a></td>
+      <td>
+        {% if pet.status %}
+        <b>Available</b>
+        {% else %}Adopted{% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
